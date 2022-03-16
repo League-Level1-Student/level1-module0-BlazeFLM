@@ -1,5 +1,7 @@
 package _01_methods._1_houses;
 
+import java.util.Random;
+
 import org.jointheleague.graphical.robot.Robot;
 
 /*
@@ -17,18 +19,26 @@ public class Houses {
 		//rob.setPenColor();
 		rob.setX(10);
 		rob.setY(500);
+		rob.setSpeed(10); 
+		for(int i = 0; i < 10; i++) {
+		Random random = new Random();
+		int ran = random.nextInt(100)+100;
+			draw(ran);
+		}
+	}
+	public void draw(int height) {
+			
+			rob.move(height);
+			rob.turn(90);
+			rob.move(50);
+			rob.turn(90);
+			rob.move(height);
+			rob.turn(-90);
+			rob.move(50);
+			rob.turn(-90);
 		
-		
-		rob.turn(90);
-		rob.move(50);
-		rob.turn(-90);
-		rob.move(150);
-		rob.turn(90);
-		rob.move(50);
-		rob.turn(90);
-		rob.move(150);
-		rob.turn(-90);
-		
+	}
+	public void color() {
 		
 	}
 }
