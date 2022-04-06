@@ -63,7 +63,7 @@ public class SpinningRecord extends PApplet {
     public void draw() {
     	if(mousePressed) {
     		SPIN = SPIN + 2;
-    		song.play();s
+    		song.play();
     	} else {
     		song.stop();
     	}

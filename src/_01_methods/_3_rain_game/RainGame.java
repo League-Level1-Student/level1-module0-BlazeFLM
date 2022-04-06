@@ -3,6 +3,8 @@ package _01_methods._3_rain_game;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+
+
 /*
  * Goal: Make a game where the user has to catch rain drops in a bucket!
  * 
@@ -42,44 +44,51 @@ import processing.core.PImage;
  *    text("Score: " + score, 20, 20);
  */
 public class RainGame extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 600;
+	static final int WIDTH = 600;
+	static final int HEIGHT = 600;
 
-    int score = 0;
-    int bucketWidth = 50;
-    int bucketHeight;
-    PImage bucket;
-    int y;
-    int x;
+	int score = 0;
+	int bucketWidth = 50;
+	int bucketHeight;
+	PImage bucket;
+	int y;
+	int x;
+	int dropY = 50;
 
-    // Sets the size of your canvas
-    @Override
-    public void settings() {
-        size(WIDTH, HEIGHT);
-    }
+	// Sets the size of your canvas
+	@Override
+	public void settings() {
+		size(WIDTH, HEIGHT);
+	}
 
-    @Override
-    public void setup() {
+	@Override
+	public void setup() {
+		bucket = loadImage("images/bucket.png");
+		bucket.resize(100, 100);
+	}
 
-    }
+	@Override
+	public void draw() {
+		fill(40,2,170);
+		background(600,600);
+		image(bucket, 300, 300);
+		fill(51,129,204);
+		ellipse(250,dropY,50,100);
+		dropY+=2;
+	}
 
-    @Override
-    public void draw() {
+	static public void main(String[] args) {
+		PApplet.main(RainGame.class.getName());
+	}
 
-    }
+	/*********************** DO NOT MODIFY THE CODE BELOW ********************/
 
-    static public void main(String[] args) {
-        PApplet.main(RainGame.class.getName());
-    }
-    
-    /*********************** DO NOT MODIFY THE CODE BELOW ********************/
-
-    void checkCatch(int x) {
-        if (x > mouseX && x < mouseX + bucketWidth) {
-            score++;
-        } else if (score > 0) {
-            score--;
-        }
-        println("Your score is now: " + score);
-    }
+	void checkCatch(int x) {
+		if (x > mouseX && x < mouseX + bucketWidth) {
+			score++;
+		} else if (score > 0) {
+			score--;
+		}
+		println("Your score is now: " + score);
+	}
 }
