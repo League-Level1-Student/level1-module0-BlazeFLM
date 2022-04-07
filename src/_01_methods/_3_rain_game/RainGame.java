@@ -1,9 +1,9 @@
 package _01_methods._3_rain_game;
 
+import java.util.Random;
+
 import processing.core.PApplet;
 import processing.core.PImage;
-
-
 
 /*
  * Goal: Make a game where the user has to catch rain drops in a bucket!
@@ -54,6 +54,7 @@ public class RainGame extends PApplet {
 	int y;
 	int x;
 	int dropY = 50;
+	int dropX = 250;
 
 	// Sets the size of your canvas
 	@Override
@@ -69,12 +70,22 @@ public class RainGame extends PApplet {
 
 	@Override
 	public void draw() {
-		fill(40,2,170);
-		background(600,600);
-		image(bucket, 300, 300);
-		fill(51,129,204);
-		ellipse(250,dropY,50,100);
-		dropY+=2;
+		fill(40, 2, 170);
+		background(600, 600);
+		image(bucket, 250, 400);
+		fill(51, 129, 204);
+		ellipse(dropX, dropY, 50, 100);
+		dropY += 2;
+		dropReset();
+	}
+
+	void dropReset() {
+		Random random = new Random();
+		int ran = random.nextInt(600);
+		if (dropY > 600) {
+			dropY = 0;
+			dropX = ran;
+		}
 	}
 
 	static public void main(String[] args) {
@@ -91,4 +102,5 @@ public class RainGame extends PApplet {
 		}
 		println("Your score is now: " + score);
 	}
+
 }
