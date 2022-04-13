@@ -1,4 +1,6 @@
-//spackage _01_methods._4_magic_worms.MagicWorms;
+package _01_methods._4_magic_worms;
+
+import java.awt.Color;
 
 import processing.core.PApplet;
 
@@ -30,43 +32,43 @@ import processing.core.PApplet;
  *    "red value", and i as the "green value" for some extra color coolness.
  */
 public class MagicWorms extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 400;
+	static final int WIDTH = 600;
+	static final int HEIGHT = 400;
 
-    @Override
-    public void settings() {
-        size(WIDTH, HEIGHT);
-    }
+	@Override
+	public void settings() {
+		size(WIDTH, HEIGHT);
+	}
 
-    @Override
-    public void setup() {
+	@Override
+	public void setup() {
+		background(66, 236, 91);
+	}
 
-    }
+	@Override
+	public void draw() {
 
-    @Override
-    public void draw() {
+	}
 
-    }
+	static public void main(String[] args) {
+		PApplet.main(MagicWorms.class.getName());
+	}
 
-    static public void main(String[] args) {
-        PApplet.main(MagicWorms.class.getName());
-    }
+	/*********************** DO NOT MODIFY THE CODE BELOW ********************/
+	float frequency = 0.001f;
+	float noiseInterval = PI;
 
-    /*********************** DO NOT MODIFY THE CODE BELOW ********************/
-    float frequency = 0.001f;
-    float noiseInterval = PI;
+	void makeMagical() {
+		fill(0, 0, 0, 10);
+		rect(0, 0, width, height);
+		noStroke();
+	}
 
-    void makeMagical() {
-        fill(0, 0, 0, 10);
-        rect(0, 0, width, height);
-        noStroke();
-    }
+	float getWormX(int i) {
+		return map(noise(i * noiseInterval + frameCount * frequency), 0, 1, 0, width);
+	}
 
-    float getWormX(int i) {
-        return map(noise(i * noiseInterval + frameCount * frequency), 0, 1, 0, width);
-    }
-
-    float getWormY(int i) {
-        return map(noise(i * noiseInterval + 1 + frameCount * frequency), 0, 1, 0, height);
-    }
+	float getWormY(int i) {
+		return map(noise(i * noiseInterval + 1 + frameCount * frequency), 0, 1, 0, height);
+	}
 }

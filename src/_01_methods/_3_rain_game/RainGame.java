@@ -55,6 +55,8 @@ public class RainGame extends PApplet {
 	int x;
 	int dropY = 50;
 	int dropX = 250;
+	int bucketX = 250;
+	int bucketY = 400;
 
 	// Sets the size of your canvas
 	@Override
@@ -72,20 +74,23 @@ public class RainGame extends PApplet {
 	public void draw() {
 		fill(40, 2, 170);
 		background(600, 600);
-		image(bucket, 250, 400);
+		image(bucket, mouseX, bucketY);
 		fill(51, 129, 204);
 		ellipse(dropX, dropY, 50, 100);
 		dropY += 2;
-		dropReset();
+
+		if (dropY >= bucketY) {
+			checkCatch(dropX);
+			dropReset();
+		}
 	}
 
 	void dropReset() {
 		Random random = new Random();
 		int ran = random.nextInt(600);
-		if (dropY > 600) {
-			dropY = 0;
-			dropX = ran;
-		}
+		dropY = 0;
+		dropX = ran;
+
 	}
 
 	static public void main(String[] args) {
