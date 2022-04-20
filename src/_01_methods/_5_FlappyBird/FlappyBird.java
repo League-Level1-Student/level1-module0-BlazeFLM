@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class FlappyBird extends PApplet {
 	static final int WIDTH = 800;
 	static final int HEIGHT = 600;
-	int birdX = 500;
+	int birdX = 350;
 	int birdY = 0;
 	int birdYVelocity = -10;
 	int gravity = 1;
@@ -22,17 +22,17 @@ public class FlappyBird extends PApplet {
 
 	@Override
 	public void draw() {
-		birdY = birdY + 2;
-		birdYVelocity = gravity + 1;
+		birdY += 2;
+		//birdYVelocity = gravity + 1;
 		background(135, 206, 250);
 		fill(155, 135, 12);
 		stroke(0, 0, 0);
-		ellipse(birdX, birdY, 100, 80);
+		ellipse(birdX, birdY + birdYVelocity, 100, 80);
 	}
 
 	public void mousePressed() {
 		if (mousePressed) {
-			birdYVelocity = 0;
+			birdYVelocity = -10;
 		}
 	}
 
