@@ -17,17 +17,19 @@ public class FlappyBird extends PApplet {
 
 	@Override
 	public void setup() {
-		size(WIDTH, HEIGHT);
+		
 	}
 
 	@Override
 	public void draw() {
-		birdY += 2;
-		//birdYVelocity = gravity + 1;
+		birdY += birdYVelocity;
+		birdYVelocity += gravity;
+		fill(42,212,87);
+		rect
 		background(135, 206, 250);
 		fill(155, 135, 12);
 		stroke(0, 0, 0);
-		ellipse(birdX, birdY + birdYVelocity, 100, 80);
+		ellipse(birdX, birdY, 100, 80);
 	}
 
 	public void mousePressed() {
