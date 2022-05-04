@@ -56,7 +56,11 @@ public class FlappyBird extends PApplet {
 	}
 	boolean pipeHitCheck() {
 		if(birdY < ran && birdX > pipeX && birdX < (pipeX+50)) {
-			
+			return true;
+		} else if (birdY> lowerPipeY * -1 && birdX > pipeX && birdX < (pipeX+50)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
