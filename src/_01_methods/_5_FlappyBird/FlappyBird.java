@@ -40,6 +40,9 @@ public class FlappyBird extends PApplet {
 		stroke(0, 0, 0);
 		ellipse(birdX, birdY, 100, 80);
 		teleportPipes();
+		if (pipeHitCheck()) {
+			exit)();
+		}
 	}
 
 	public void mousePressed() {
@@ -54,10 +57,11 @@ public class FlappyBird extends PApplet {
 			ran = (int) random(25) * 10;
 		}
 	}
+
 	boolean pipeHitCheck() {
-		if(birdY < ran && birdX > pipeX && birdX < (pipeX+50)) {
+		if (birdY < ran && birdX > pipeX && birdX < (pipeX + 50)) {
 			return true;
-		} else if (birdY> lowerPipeY * -1 && birdX > pipeX && birdX < (pipeX+50)) {
+		} else if (birdY > lowerPipeY * -1 && birdX > pipeX && birdX < (pipeX + 50)) {
 			return true;
 		} else {
 			return false;
