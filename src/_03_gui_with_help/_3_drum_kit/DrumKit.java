@@ -14,8 +14,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class DrumKit implements MouseListener {
 	static boolean canPlaySounds = true; // Set this to false if your computer cannot play sounds
@@ -24,25 +26,25 @@ public class DrumKit implements MouseListener {
 	public void run() {
 
 		//  Make a JFrame variable and initialize it using "new JFrame()"
-
+		JFrame drum = new JFrame();
 		//  Make the frame visible and
 		// set its default close operation to JFrame.EXIT_ON_CLOSE
-
+		drum.setVisible(true);
 		//  Set the title of the frame
-
+		drum.setTitle("Drum Set");
 		//  Make a JPanel variable and initialize it using "new JPanel().
-
+		JPanel panel = new JPanel();
 		//  Add the panel to the frame. (The panel is invisible.)
-
+		drum.add(panel);
 		//  Use the image of a drum provided ("snare.jpg") or
 		//  download an image of a drum from the Internet and drop it into the
 		//  Drum Kit recipe package.
-
+		
 		//  Put the name of the drum image file in a String variable.
-
+		String drumFile = "snare.jpg";
 		//  Edit the next line to use your String variable
 		// drumLabel = createLabelImage(drumImageString);
-
+		drumLabel = createLabelImage(drumFile);
 		//  Add the label to the panel
 
 		//  Call the pack() method on the frame. 
@@ -68,13 +70,15 @@ public class DrumKit implements MouseListener {
 														// that the mouse
 														// clicked on
 
-		// You can use the drum sound provided ("drum.wav") or	
+		// You can use the drum sound provided ("drum.wav") or
 		// download another drum sound (.wav) and drop it into the Drum Kit package.
-		// You can find sounds on freesound.org, and to download from there, you must log in 
+		// You can find sounds on freesound.org, and to download from there, you must
+		// log in
 		// Ask your teacher for The League's login information.
 
-		//  If the user clicks on the drumImage...use the playSound method to play the drum sound.
-		//  Test to see if it works before moving on.
+		// If the user clicks on the drumImage...use the playSound method to play the
+		// drum sound.
+		// Test to see if it works before moving on.
 
 	}
 
@@ -90,25 +94,24 @@ public class DrumKit implements MouseListener {
 		return imageLabel;
 	}
 
-
 	public static synchronized void playSound(String fileName) {
 		if (canPlaySounds) {
-        	// Note: use .wav files  
+			// Note: use .wav files
 			String path = "src/_02_gui_with_help/_3_drum_kit/";
 			new Thread(new Runnable() {
 				public void run() {
 					try {
 						Clip clip = AudioSystem.getClip();
-						AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path+fileName));
+						AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path + fileName));
 						clip.open(inputStream);
 						clip.start();
 					} catch (Exception e) {
-						System.out.println("play sound error: " + e.getMessage() + " for " + path+fileName);
+						System.out.println("play sound error: " + e.getMessage() + " for " + path + fileName);
 					}
 				}
-			}).start(); }
-		else {
-			JOptionPane.showMessageDialog(null, "Cannot play "+fileName, "No Sound", JOptionPane.ERROR_MESSAGE);
+			}).start();
+		} else {
+			JOptionPane.showMessageDialog(null, "Cannot play " + fileName, "No Sound", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
