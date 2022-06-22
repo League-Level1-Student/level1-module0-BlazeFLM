@@ -21,10 +21,10 @@ public class BodyPartQuiz {
 	// package,or if you prefer, get celebrity photos from the Internet,
 	// place them in the recipe package(body_part_quiz), and change the names below.
 
-	String firstImage = "src/_05_body_part_quiz/arnold.jpeg";
-	String secondImage = "src/_05_body_part_quiz/leonardo.jpeg";
-	String thirdImage = "src/_05_body_part_quiz/morgan.jpeg";
-	String fourthImage = "src/_05_body_part_quiz/jack.jpeg";
+	String firstImage = "src/_03_gui_with_help/_4_body_part_quiz/arnold.jpeg";
+	String secondImage = "src/_03_gui_with_help/_4_body_part_quiz/leonardo.jpeg";
+	String thirdImage = "src/_03_gui_with_help/_4_body_part_quiz/morgan.jpeg";
+	String fourthImage = "src/_03_gui_with_help/_4_body_part_quiz/jack.jpeg";
 
 	JFrame window = new JFrame();
 	JPanel panel = new JPanel();
@@ -42,7 +42,7 @@ public class BodyPartQuiz {
 
 		// 3. Change the size of the window so that you can only see part of the
 		// image.
-		window.setSize(500, 500);
+		window.setSize(100, 140);
 
 		showNextImage();
 
@@ -55,7 +55,9 @@ public class BodyPartQuiz {
 		// 2. Set the size of the window in the initializeGui() method
 
 		// 4. Ask the user who this person is and store their answer
-		String guess = JOptionPane.showInputDialog("who is this?");
+
+		// Arnold Schwarzenegger
+		String guess = JOptionPane.showInputDialog("who is this? First names only.");
 
 		// 5. Check their answer. If they guessed correctly:
 		// -- Tell them they are right and increase the score by 1
@@ -65,14 +67,44 @@ public class BodyPartQuiz {
 		}
 		// 6. Otherwise:
 		// -- Tell them they are wrong and who the person is
-
+		else {
+			JOptionPane.showMessageDialog(null, "This is Arnold Schwarzenegger");
+		}
 		// 7. Use the showNextImage() method below to get the next image
 		showNextImage();
 
+		// Leonardo DiCaprio
 		// 8. .... repeat 4-7 for all your images.....
+		guess = JOptionPane.showInputDialog("who is this?");
 
+		if (guess.equalsIgnoreCase("Leonardo")) {
+			JOptionPane.showMessageDialog(null, "You are right!");
+			score++;
+		} else {
+			JOptionPane.showMessageDialog(null, "This is Leonardo DiCaprio");
+		}
+		showNextImage();
+
+		// Morgan Freeman
+		guess = JOptionPane.showInputDialog("who is this? First names only.");
+		if (guess.equalsIgnoreCase("Morgan")) {
+			JOptionPane.showMessageDialog(null, "You are right!");
+			score++;
+		} else {
+			JOptionPane.showMessageDialog(null, "This is Morgan Freeman");
+		}
+		showNextImage();
+
+		// Jack
+		guess = JOptionPane.showInputDialog("who is this? First names only.");
+		if (guess.equalsIgnoreCase("Jack")) {
+			JOptionPane.showMessageDialog(null, "You are right!");
+			score++;
+		} else {
+			JOptionPane.showMessageDialog(null, "This is Jack Black");
+		}
 		// 9. Show them their current score
-
+		JOptionPane.showMessageDialog(null, "Your score is " + score);
 	}
 
 	public void showNextImage() {
