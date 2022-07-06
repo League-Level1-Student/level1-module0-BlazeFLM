@@ -13,30 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class JackInTheBox implements ActionListener{
+	int count = 0;
 	public void showButton() {
 	JFrame frame = new JFrame();
 	frame.setVisible(true);
 	JButton button = new JButton();
+	button.setText("Surprise");
 	frame.add(button);
 	frame.pack();
 	button.addActionListener(this);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -103,6 +89,9 @@ public class JackInTheBox implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		count++;
+		if(count == 5 ) {
+			showPicture("jackInTheBox.png");
+		}
 	}
 }
